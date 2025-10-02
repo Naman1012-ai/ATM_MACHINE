@@ -7,7 +7,7 @@ int main(){
     
     //BALANCE DETAILS!
     int option;
-    float dep,balance=0,with,newbal;
+    float dep,balance=0,with;
 
     //CREATING ACCOUNT!
 
@@ -131,3 +131,4 @@ int main(){
     return 0;
 
 }
+
