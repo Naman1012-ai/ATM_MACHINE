@@ -78,7 +78,7 @@ int main(){
      // CHECK BALANCE!
 
     if(option==1){
-        printf("\nYour Balance : %.2f\n",balance);
+        printf("\nYour Balance : Rs%.2f\n",balance);
     }
 
     // DEPOSIT MONEY!
@@ -131,4 +131,5 @@ int main(){
     return 0;
 
 }
+
 
