@@ -86,15 +86,13 @@ int main(){
     if(option==2){
         printf("\nEnter deposit amount : ");
         scanf("%f",&dep);
-        if(dep>0){balance+=dep;}
-        
-        if(dep>0){
-           printf("Deposited Amount :Rs%.2f.\t New Balance :Rs%.2f\n",dep,balance);
-        
-        }
+       
         while(dep<=0){
             printf("Deposited amount must be greater than 0!  Re-enter deposit amount : ");
             scanf("%f",&dep);
+        }if(dep>0){
+            balance+=dep;
+            printf("Deposited Amount :Rs%.2f.\t New Balance :Rs%.2f\n",dep,balance);
         }
     }
     
@@ -131,4 +129,5 @@ int main(){
     
 
     return 0;
+
 }
