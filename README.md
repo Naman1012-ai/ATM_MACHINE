@@ -44,7 +44,7 @@ Run in the same terminal
 bash
 ./ATM_System.exe
 
-Data Management
+## 📝 Data Management
 The system creates two files to store data:
 
 users_data_1.txt: Stores usernames, encrypted PINs (plain text in this version), and balances.
@@ -53,12 +53,12 @@ trans.txt: Stores every transaction linked to specific account numbers.
 
 Note: These files are ignored by Git via .gitignore to keep your local database private.
 
-⚠️ Requirements
+##⚠️ Requirements
 Operating System: Windows (required for system("cls") and getch()).
 
 Compiler: GCC or any standard C99 compatible compiler.
 
-🤝 Contributing
+##🤝 Contributing
 Feel free to fork this project and add features like:
 
 Transferring money between accounts.
