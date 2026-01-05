@@ -53,12 +53,12 @@ trans.txt: Stores every transaction linked to specific account numbers.
 
 Note: These files are ignored by Git via .gitignore to keep your local database private.
 
-##⚠️ Requirements
+## ⚠️ Requirements
 Operating System: Windows (required for system("cls") and getch()).
 
 Compiler: GCC or any standard C99 compatible compiler.
 
-##🤝 Contributing
+## 🤝 Contributing
 Feel free to fork this project and add features like:
 
 Transferring money between accounts.
