@@ -1,0 +1,14 @@
+[ACCOUNT_NUMBER           : 100444]
+OWNER'S NAME              : Naman
+PASSWORD                  : 1234
+TOTAL_TRANSACTIONS        : 2
+AVL. BALANCE              : Rs.2000.00
+HIGHEST_WITHDRAWAL_AMOUNT : Rs.5000.00
+
+[ACCOUNT_NUMBER           : 100000640]
+OWNER'S NAME              : xyz
+PASSWORD                  : 12345
+TOTAL_TRANSACTIONS        : 3
+AVL. BALANCE              : Rs.2000.00
+HIGHEST_WITHDRAWAL_AMOUNT : Rs.2000.00
+
