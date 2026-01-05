@@ -35,13 +35,13 @@ The project is split into modules for better maintainability:
 ### Compilation
 Open your terminal in the project folder and run:
 
-```bash
+bash
 gcc main.c utils.c atm_logic.c auth.c -o ATM_System
 
 ### After Compilation
 Run in the same terminal
 
-```bash
+bash
 ./ATM_System.exe
 
 Data Management
