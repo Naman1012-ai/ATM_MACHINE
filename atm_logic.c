@@ -23,7 +23,7 @@ int user_exist(char *account_num) {
     fclose(fp); return 0;
 }
 
-void save_trans(trans *att) {
+void save_transactions(trans *att) {
     FILE *fp = fopen(TRANSACTIONS, "a");
     if (fp == NULL) return;
 
@@ -165,7 +165,8 @@ void load_userdata(char *account_num, user *details)
     fclose(fp);
 }
 
-void past_trans(char *account_num)
+
+void past_transactions(char *account_num)
 {
     clearscreen();
     border(MAGENTA);
@@ -271,7 +272,7 @@ void deposit_amount(char *account_num){
     att.deposit_amount = dep;
     att.withdraw_amount = 0.0;
     get_timestamps(att.timestamps);
-    save_trans(&att);
+    save_transactions(&att);
 
     printf("\n");
     printf(GREEN "Amount of :-" RESET BOLD " Rs. " RESET MAGENTA"%.2f " GREEN "deposited successfully in your account number " RESET "'%s'"GREEN"!", dep, details.account_num); 
@@ -340,7 +341,7 @@ void withdraw_amount(char *account_num){
     }
     att.deposit_amount = 0.0;
     get_timestamps(att.timestamps);
-    save_trans(&att);
+    save_transactions(&att);
 
     printf("\n");
     printf(GREEN "Amount of :-" RESET BOLD " Rs. " RESET MAGENTA"%.2f" GREEN " withdrawn successfully from your account number " RESET "'%s' "GREEN"!", with, details.account_num );
