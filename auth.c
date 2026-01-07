@@ -10,8 +10,6 @@ void save_userdata(struct user *u);
 void load_userdata(char *account_num, user *details);
 int create_account(char *account_num);
 int safe_money();
-void save_transactions(trans *att);
-void get_timestamps(char *tmstmp);
 
 int login(char *account_num)
 {
@@ -189,116 +187,5 @@ int create_account(char *account_num)
     printf("\nPress any key to continue...\n");
     getch();
     return 0;
-
-}
-
-void transfer_money(char *account_num)
-{
-    clearscreen();
-    float trf;
-   
-    border(MAGENTA);
-    centered("TRANSFER MONEY!", BOLD YELLOW);
-    border(MAGENTA);
-    printf("\n");
-
-    char act_num[20];
-    printf(CYAN "Enter recipient account number " RESET "(To exit, press '1')" CYAN ":- " RESET);
-    scanf("%19s", act_num);
-       
-    if(strcmp(act_num, "1") == 0){
-        return;
-    }
-
-    if(user_exist(act_num) == 0){
-        printf(BG_RED "\nAccount number doesn't exist! Transfer failed.\n" RESET);
-        printf("Press any key to return...\n");
-        getch();
-        return;
-    }
-
-    if(strcmp(act_num, account_num) != 0){
-        
-        char act_pin[MAX];
-        printf(CYAN "Enter your account pin:- " RESET);
-        getmasked_password(act_pin, MAX);
-       
-        user details = {0};
-        load_userdata(account_num, &details);
-
-        if(strcmp(act_pin, details.account_pin) != 0){
-            printf(BG_RED "\nWrong pin! Transfer failed.\n" RESET);
-            printf("Press any key to return...\n");
-            getch();
-            return;
-        }
-
-        int atts = 0;
-        while(atts < 3)
-        {
-            printf(CYAN "Enter transfer amount " RESET "(To exit, press '1')" CYAN ":- " RESET BOLD "Rs. "RESET);
-            trf = safe_money();
-
-            if(trf == 1) return;
-            if(trf <= details.avl_balance && trf > 0) break;
-            if(trf > details.avl_balance){
-                printf(BG_RED "\nInsufficient Balance!" RESET );
-                printf(BG_PINK "\nAvl. Balance "RESET PINK ":- " RESET BOLD "Rs. " RESET MAGENTA"%.2f " RESET, details.avl_balance);
-                printf("\n\n");
-            }
-
-            if (atts == 2 && trf > details.avl_balance)
-            {
-                printf(BG_RED "\nToo many wrong attempts! Try again later!!" RESET);
-                printf("\n");
-                printf("Press any key to return...\n");
-                getch();
-                return ;
-                break;
-            }
-            atts++;
-        }
-
-        if(trf > details.highest_trans){
-            details.highest_trans = trf;
-        }
-        details.avl_balance -= trf;
-        details.total_trans++;
-        save_userdata(&details);
-
-        trans att;
-        strcpy(att.account_num, account_num);
-        att.withdraw_amount = trf;
-        att.deposit_amount = 0.0;
-        get_timestamps(att.timestamps);
-        save_transactions(&att);
-
-        printf(BOLD GREEN "\nAmount of " RESET BOLD "%.2f" GREEN " is successfully transferred from account " RESET BOLD "'%s'" GREEN " to the account " RESET BOLD "'%s'" GREEN "!\n\n" RESET, trf, details.account_num, act_num);
-    }
-
-    else
-    {
-        printf(BG_RED "\nYou Cannot transfer money to the same account!\n" RESET);
-        printf("Press any key to return...\n");
-        getch();
-        return;
-    }
-  
-    // Update recipient's account
-    user details = {0};
-    load_userdata(act_num, &details);
-    details.avl_balance += trf;
-    details.total_trans++;
-    save_userdata(&details);
-
-    trans att;
-    strcpy(att.account_num, act_num);
-    att.deposit_amount = trf;
-    att.withdraw_amount = 0.0;
-    get_timestamps(att.timestamps);
-    save_transactions(&att);
-
-    printf("Press any key to return...\n");
-    getch();
 
 }
